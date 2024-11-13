@@ -160,20 +160,3 @@ answerstoquestions = InlineKeyboardMarkup(
 
 
 
-##Самые главные кнопки.
-#kk = ReplyKeyboardMarkup(
-#    keyboard=[
-#        [
-#            KeyboardButton(text="Добавить фотку ✅"),
-#            KeyboardButton(text="Удалить фотку ❌")
-#        ],
-#        [
-#            KeyboardButton(text="Мои фотки 🎞")
-#        ],
-#        [
-#            KeyboardButton(text="Инструкция 📜")
-#        ]
-#    ],
-#    resize_keyboard=True
-#)
-#
