@@ -18,14 +18,17 @@ import buttons
 
 # All handlers should be attached to the Router (or Dispatcher)
 
-TOKEN = "?" # Primex Cargo
+TOKEN = "7911707477:AAGynC66CbOweF0LMF6rOa1GPeLLyOFxRgc"
 
 allids = {
-    "logo" : "AgACAgIAAxkBAAMCZy5MSDbnOviB_VCBeJ1NfhO5e08AAuvpMRtu9XBJdEY8CocI19EBAAMCAAN5AAM2BA",# логотип
-    "screenshot" : "AgACAgIAAxkBAANBZy5XJM0LO6t-8WLd_P7UzjuVcYIAAhbqMRtu9XBJYweP8PLNla8BAAMCAAN5AAM2BA", # скрин личного кабинета
-    "howthatworks" : "AgACAgIAAxkBAAN4Zy5lJG6m7B1vOwuRnghLe4VU89EAApDlMRvaFnlJOBT3H9GP52wBAAMCAAN5AAM2BA", # склад в голом виде
-    "howtotrackorder" : "AgACAgIAAxkBAAOOZy5xmwPJ_jq0vNluNrGixnNTOYMAAtrlMRvaFnlJCwYlH5efNBQBAAMCAAN5AAM2BA",# мужик ищет заказ
-    "cutewoman" : "AgACAgIAAxkBAAPIZy54PKnxb-onUDzwriX2LQI0yfMAApTrMRtu9XBJEGTDpRqPi7sBAAMCAAN4AAM2BA" # милая женщина 
+    "startphoto" : "AgACAgIAAxkBAAMDZys6_3ZcFnD2Gh-OA7mP-e1KatQAAmPeMRvSMFhJbYBcP3pZ6BYBAAMCAAN4AAM2BA",
+    "secpho" : "AgACAgIAAxkBAAMLZytRMv2FfSLfwvoJHsksEwdHA9UAAqzfMRvSMFhJdiYGvaoSDDYBAAMCAAN5AAM2BA",
+    "logo" : "AgACAgIAAxkBAAMfZyusnQqQYM51DoUcjNCppq2bQzsAAi_jMRvSMFhJiUh7Y981Ci0BAAMCAAN5AAM2BA",
+    "vid" : "BAACAgIAAxkBAAMuZyuwO509QNFkQAuGBbq0rP1znjIAAqZlAALSMFhJaEqLGv5_9ek2BA",
+    "kakprim" : "AgACAgIAAxkBAAM6ZyuyV9l3BxxNbEFtg2aa1XJBlUkAAnfjMRvSMFhJ7yKRCn6oJ5IBAAMCAAN4AAM2BA",
+    "screenshot" : "AgACAgIAAxkBAANqZyvQF3h-KDDMaRqxWTkDDIiCMqUAAsThMRs5E2BJ-i1x6_mctpcBAAMCAAN3AAM2BA",
+    "howthatworks" : "AgACAgIAAxkBAAIBzWcuZlDWH45lm8TW6vD_vPnQisKDAAKQ5TEb2hZ5ScQGQ6k_0B-_AQADAgADeQADNgQ",
+    "trackingofprod" : "AgACAgIAAxkBAAICAWcub8TQGLMI40mCdeTL11l_wjSgAALa5TEb2hZ5SaBfScxUwrMiAQADAgADeQADNgQ"
 }
 
 
@@ -37,25 +40,25 @@ router = Router()
 @dp.message(Command("start"))
 async def getstarted(message: Message):
     await message.answer_photo(allids["logo"],"""<b>Добро пожаловать в Primex:</b>
-Мы являемся сервисом по доставке ваших любимых брендов из любого американского, китайского, турецкого и европейского сайта и маркетплейса во все регионы России.
+Ваш надежный партнер для экспресс доставки из Китая в Россию!
+
+Мы доставляем посылки из любых китайских маркетплейсов во все регионы России, учитывая все потребности баеров и обеспечивая удобство и надежность на каждом этапе доставки.
 
 """,parse_mode="HTML",reply_markup=buttons.mainkb)
     
 
 
-
-
-
-
 # ответ на нажатие кнопки , 👉 Как пользоваться Primex 👈
 @dp.callback_query(lambda callback_query: callback_query.data == "howtouse")
 async def howtouse(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer_photo(allids["cutewoman"],"""В этом меню собраны все инструкции по использованию сервиса <b>Primex</b> 
+    await callback.message.answer_photo(allids["kakprim"],"""В этом меню собраны все инструкции по использованию сервиса <b>Primex</b> 
 
 Выберите интересующий вас пункт
 """,parse_mode="HTML",reply_markup=buttons.sec)
     
     
+
+
 # ответ на нажатие кнопки , Как это работает ? 
 @dp.callback_query(lambda callback_query: callback_query.data == "howthisworks")
 async def howthisworks(callback: CallbackQuery, state: FSMContext):
@@ -79,122 +82,49 @@ async def howthisworks(callback: CallbackQuery, state: FSMContext):
 
 
 <b>Доставляем до ваших рук</b>
-
 Доставляем во все регионы России. До Вашего
 адреса или до ближайшего пункта выдачи.
 
 
 """,parse_mode="HTML",reply_markup=buttons.howtotrack)
-
-# вовзращение к как это работает и ссылка на рег
-@dp.callback_query(lambda callback_query: callback_query.data == "backtohowtouse")
-async def backtohowtouse(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer_photo(allids["cutewoman"],"""В этом меню собраны все инструкции по использованию сервиса <b>Primex</b> 
-
-Выберите интересующий вас пункт
-""",parse_mode="HTML",reply_markup=buttons.sec)
-
-
-# регистрация и скриншот 
-@dp.callback_query(lambda callback_query: callback_query.data == "kabin")
-async def kabin(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer_photo(allids["screenshot"],"""После регистрации вам станет доступен удобный личный кабинет, где вы найдете адреса наших складов с инструкциями по правильному заполнению данных. 
-В личном кабинете вы сможете отслеживать свои посылки, заказывать выкуп товаров и подключать дополнительные услуги.
-""",reply_markup=buttons.screen)
-
-
-# backtomainkb возвращение к главной менюшке 
-@dp.callback_query(lambda callback_query: callback_query.data == "backtomainkb")
-async def backtomainkb(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer_photo(allids["logo"],"""Мы являемся сервисом по доставке ваших любимых брендов
-из любого американского, китайского, турецкого и европейского сайта и маркетплейса во все регионы России.
-
-""",parse_mode="HTML",reply_markup=buttons.mainkb)
     
-    
-
-# кнопка назал usachi
-@dp.callback_query(lambda callback_query: callback_query.data == "usachi")
-async def usachi(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""Здесь стоимость для каждой страны.
-""",reply_markup=buttons.pricecount)
-    
-# Рассчитать стоимость 
+# ответ на нажатие кнопки Рассчитать доставку
 @dp.callback_query(lambda callback_query: callback_query.data == "pricecount")
 async def pricecount(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""Здесь стоимость для каждой страны.
-""",reply_markup=buttons.pricecount)
-    
-    
-# США
-@dp.callback_query(lambda callback_query: callback_query.data == "us")
-async def us(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""Стоимость за кг 17$.
-Срок доставки 14-16 дней.
-Вес округляется от 1 кг.
-Отправка происходит 1 раз в неделю.
+    await callback.message.answer("""<b>Стоимость за кг 6$
+Срок доставки 12-15 дней
 
-
-""",reply_markup=buttons.backtocountries)
-    
-    
-#Китай
-@dp.callback_query(lambda callback_query: callback_query.data == "cn")
-async def cn(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""Стоимость за кг 7$.
-Срок доставки 12-15 дней.
-Вес округляется от 1 кг.
-Отправка товаров происходит 5 раз в неделю.
-
-""",reply_markup=buttons.backtocountries)
-    
-    
-# Турция 
-@dp.callback_query(lambda callback_query: callback_query.data == "tu")
-async def tu(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""Стоимость за кг 10$.
-Срок доставки 4-5 дней.
-Вес округляется от 1 кг.
-Отправка товаров происходит 5 раз в неделю.
-
-
-""",reply_markup=buttons.backtocountries)
-    
-    
-# Италия
-@dp.callback_query(lambda callback_query: callback_query.data == "it")
-async def it(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""Стоимость за кг 17€.
-Срок доставки 14-16 дней.
-Вес округляется от 1 кг.
-Отправка товаров происходит 1 раз в неделю.
-
-""",reply_markup=buttons.backtocountries)
-
-# помощь с выкупом helpwithbuying
-@dp.callback_query(lambda callback_query: callback_query.data == "helpwithbuying")
-async def helpwithbuying(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""Ваш личный байер в мире международных покупок.
-
-Служба <b>Primex</b> поможет легко приобрести товары в зарубежных интернет-магазинах. Выкупим товары с сайтов за вас в тот же день – быстро, легко и доступно.
-
-После заполнения заявки, байер - @PrimexCargo, сам с вами свяжется в течение 2-х часов в рабочее время.
-
-
+Вес округляется от1 кг.
+Отправка товаров происходит 5 раза 
+в неделю.</b>
 """,parse_mode="HTML",reply_markup=buttons.backtomainmenu)
 
 
-# ответы на вопросы 
-@dp.callback_query(lambda callback_query: callback_query.data == "qa")
-async def qa(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""В данном меню собраны ответы на самые популярные вопросы
-""",reply_markup=buttons.otvetynavop)
 
 
-# Как отслеживать посылки ?
-@dp.callback_query(lambda callback_query: callback_query.data == "howtotrackorders")
-async def howtotrackorders(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer_photo(allids["howtotrackorder"],"""<b>Чтобы отслеживать посылки, мы отправим вам на электронную почту три уведомления с подробной информацией</b>
+# видео склада в Китае 
+@dp.callback_query(lambda callback_query: callback_query.data == "trackorder")
+async def trackorder(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_video(allids["vid"],caption="""Наш склад оборудован всеми необходимыми материалами для безопасного хранения и обработки ваших посылок.
+
+Мы работаем без выходных, чтобы принимать посылки <b>каждый день.</b>
+
+Команда профессионалов тщательно проверяет каждую посылку и обеспечивает надежную упаковку для безопасной доставки""",parse_mode="HTML",reply_markup=buttons.backtomainmenu)
+
+
+
+# лич кабинет
+@dp.callback_query(lambda callback_query: callback_query.data == "kabin")
+async def kabinlich(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_photo(allids["screenshot"],"""После регистрации вам станет доступен удобный <b>личный кабинет</b>, где вы найдете адреса наших складов с инструкциями по правильному заполнению данных. 
+В личном кабинете вы сможете отслеживать свои посылки, заказывать выкуп товаров и подключать дополнительные услуги.
+""",parse_mode="HTML",reply_markup=buttons.screen)
+    
+    
+# как я буду отслеживать посылки 
+@dp.callback_query(lambda callback_query: callback_query.data == "howwillitrack")
+async def howwillitrack(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer("""<b>Чтобы отслеживать посылки, мы отправим вам на электронную почту три уведомления с подробной информацией</b>
 
 Когда посылка поступит на наш склад
 
@@ -204,24 +134,122 @@ async def howtotrackorders(callback: CallbackQuery, state: FSMContext):
 
 
 Вы также можете в любой момент отслеживать статус на нашем сайте: https://primexcargo.org/tracking
-""",parse_mode="HTML",reply_markup=buttons.backtoquest)
 
-# Правила получения посылки
+
+""",parse_mode="HTML")
+
+# Помощь с выкупом 
+@dp.callback_query(lambda callback_query: callback_query.data == "helpwithbuying")
+async def helpwithbuying(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer("""<b>Если вам нужна помощь с выкупом, служба Primex сделает всё легко и просто!</b>
+
+Купим товары с китайских маркетплейсов за вас в тот же день — быстро, удобно и доступно. 
+
+Просто отправьте ссылку на нужный товар менеджеру - @PrimexCargo, и байер свяжется с вами в течение 2 часов в рабочее время.
+
+
+""",parse_mode="HTML",reply_markup=buttons.justback)
+
+# кнопка назад , которая возвращает где кнопка старт и сам логотип и основные кнопки
+@dp.callback_query(lambda callback_query: callback_query.data == "back")
+async def getback(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_photo(allids["logo"],"""<b>Добро пожаловать в Primex: </b>
+Ваш надежный партнер для экспресс доставки из Китая в Россию!
+
+Мы доставляем посылки из любых китайских маркетплейсов во все регионы России, учитывая все потребности баеров и обеспечивая удобство и надежность на каждом этапе доставки.
+
+""",parse_mode="HTML",reply_markup=buttons.mainkb)
+    
+# кнопка назад , чтобы увидеть 3 кнопки , как это рабоает , ссылка на регистрацию , помощь с выкупом
+@dp.callback_query(lambda callback_query: callback_query.data == "backtohow")
+async def getbacktohow(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_photo(allids["kakprim"],"""В этом меню собраны все инструкции по использованию сервиса <b>Primex</b> 
+
+Выберите интересующий вас пункт
+""",parse_mode="HTML",reply_markup=buttons.sec)
+    
+    
+# возвращение с регистрации , туда где 3 кнопки 
+@dp.callback_query(lambda callback_query: callback_query.data == "backfromregistration")
+async def backfromregistration(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_photo(allids["kakprim"],"""В этом меню собраны все инструкции по использованию сервиса <b>Primex</b> 
+
+Выберите интересующий вас пункт
+""",parse_mode="HTML",reply_markup=buttons.sec)
+    
+
+# возвращение назад , с Купим товары с китайских маркетплейсов
+@dp.callback_query(lambda callback_query: callback_query.data == "justback")
+async def justback(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_photo(allids["kakprim"],"""В этом меню собраны все инструкции по использованию сервиса <b>Primex</b> 
+
+Выберите интересующий вас пункт
+
+""",parse_mode="HTML",reply_markup=buttons.sec)
+
+
+# возвращение в главное меню , с любого места 
+@dp.callback_query(lambda callback_query: callback_query.data == "mainmenu")
+async def getbacktomainmenu(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_photo(allids["logo"],"""<b>Добро пожаловать в Primex: </b>
+Ваш надежный партнер для экспресс доставки из Китая в Россию!
+
+Мы доставляем посылки из любых китайских маркетплейсов во все регионы России, учитывая все потребности баеров и обеспечивая удобство и надежность на каждом этапе доставки.
+
+""",parse_mode="HTML",reply_markup=buttons.mainkb)
+
+
+# Ответы на популярные вопросы 
+@dp.callback_query(lambda callback_query: callback_query.data == "qa")
+async def questionanswer(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer("""<b>В данном меню собраны ответы на самые популярные вопросы</b>
+""",parse_mode="HTML",reply_markup=buttons.answerstoquestions)
+    
+# deliverytime
+@dp.callback_query(lambda callback_query: callback_query.data == "deliverytime")
+async def deliverytime(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer("""Срок доставки до Москвы составляет 12-15 дней дней с момента отправки
+""",parse_mode="HTML")
+
+@dp.callback_query(lambda callback_query: callback_query.data == "howtotrackorders")
+async def howtotrackorders(callback: CallbackQuery, state: FSMContext):
+    await callback.message.answer_photo(allids["trackingofprod"],"""<b>Чтобы отслеживать посылки, мы отправим вам на электронную почту три уведомления с подробной информацией</b>
+
+Когда посылка поступит на наш склад
+
+Когда мы отправим её к вам
+
+Когда посылка прибудет в Москву
+
+
+Вы также можете в любой момент отслеживать статус на нашем сайте: https://primexcargo.org/tracking
+
+""",parse_mode="HTML")
+    
 @dp.callback_query(lambda callback_query: callback_query.data == "rulesofgetting")
 async def rulesofgetting(callback: CallbackQuery, state: FSMContext):
     await callback.message.answer("""После прибытия груза вам на электронную почту будет отправлено письмо с расчетом
 и ссылкой на менеджера. Необходимо оплатить, отправить чек и оформить доставку
 по России в личном кабинете.
-""",parse_mode="HTML",reply_markup=buttons.backtoquest)
+""",parse_mode="HTML")
 
 
-# назад к вопросам 
-@dp.callback_query(lambda callback_query: callback_query.data == "backtoqa")
-async def backtoqa(callback: CallbackQuery, state: FSMContext):
-    await callback.message.answer("""В данном меню собраны ответы на самые популярные вопросы
-""",reply_markup=buttons.otvetynavop)
 
 
+
+
+# Получение Айдишек , для фото и видео !
+
+#@dp.message(F.video)
+#async def sendback(message: Message):
+#    file_id = message.video.file_id
+#    await message.answer(f"{file_id}")
+#    
+#      
+#@dp.message(F.photo)
+#async def sendback(message: Message):
+#    file_id = message.photo[-1].file_id
+#    await message.answer(f"{file_id}")
 
 
 

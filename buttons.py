@@ -9,16 +9,20 @@ mainkb = InlineKeyboardMarkup(
             
         ],
         [
-            InlineKeyboardButton(text="Отзывы ⭐",url="https://t.me/otzyvyprimex"),
-            InlineKeyboardButton(text="Отчет 📖 ",url="https://t.me/Reportprime")
+            InlineKeyboardButton(text="Отзывы ⭐",url="https://t.me/Primexchina_otzyvy"),
+            InlineKeyboardButton(text="Отчет 📖 ",url="https://t.me/ReportPRChina")
             
         ],
         [
-            InlineKeyboardButton(text="Рассчитать стоимость 📲",callback_data="pricecount")
+            InlineKeyboardButton(text="Склад в Китае 🇨🇳",callback_data="trackorder")
             
         ],
         [
-            InlineKeyboardButton(text="Помощь с выкупом 💸",callback_data="helpwithbuying")
+            InlineKeyboardButton(text="Поставщики 🚛",url="https://t.me/+TmwR3aRqCsM5NmQy")
+            
+        ],
+        [
+            InlineKeyboardButton(text="Рассчитать доставку 📲",callback_data="pricecount")
             
         ],
         [
@@ -26,13 +30,9 @@ mainkb = InlineKeyboardMarkup(
             
         ],
         [
-            InlineKeyboardButton(text="Наш общий чат 💭",url="https://t.me/primexecchat")
+            InlineKeyboardButton(text="Связатся с мэнеджером 👤",url="https://t.me/PrimexCargo")
             
         ],
-        [
-            InlineKeyboardButton(text="Наш сайт 💻",url="https://primexcargo.org")
-            
-        ]
     ],
     resize_keyboard=True
 )
@@ -47,9 +47,13 @@ sec = InlineKeyboardMarkup(
             InlineKeyboardButton(text="Ссылка на регистрацию",callback_data="kabin")
         ],
         [
-            InlineKeyboardButton(text="Назад ↩",callback_data="backtomainkb")
+            InlineKeyboardButton(text="Помощь с выкупом",callback_data="helpwithbuying")
             
-        ]
+        ],
+        [
+            InlineKeyboardButton(text="Назад ↩",callback_data="back")
+            
+        ] 
     ],
     resize_keyboard=True
 )
@@ -61,7 +65,7 @@ screen = InlineKeyboardMarkup(
             
         ],
         [
-            InlineKeyboardButton(text="Назад ↩",callback_data="backtohowtouse")
+            InlineKeyboardButton(text="Назад ↩",callback_data="backfromregistration")
             
         ]
         
@@ -73,7 +77,11 @@ screen = InlineKeyboardMarkup(
 howtotrack = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="Назад ↩",callback_data="backtohowtouse")
+            InlineKeyboardButton(text="Как я буду отслеживать посылки?",callback_data="howwillitrack")
+            
+        ],
+        [
+            InlineKeyboardButton(text="Назад ↩",callback_data="backtohow")
             
         ] 
     ],
@@ -81,69 +89,42 @@ howtotrack = InlineKeyboardMarkup(
 )
 
 
-backtocountries = InlineKeyboardMarkup(
+justback = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="Назад ↩",callback_data="usachi")
+            InlineKeyboardButton(text="Назад ↩",callback_data="justback")
             
         ] 
     ],
     resize_keyboard=True
 )
-
 
 backtomainmenu = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="Назад ↩",callback_data="backtomainkb")
+            InlineKeyboardButton(text="Назад ↩",callback_data="mainmenu")
             
-        ]
+        ] 
     ],
     resize_keyboard=True
 )
 
-
-
-
-
-
-pricecount = InlineKeyboardMarkup(
+answerstoquestions = InlineKeyboardMarkup(
     inline_keyboard=[
         [
-            InlineKeyboardButton(text="США 🇺🇸",callback_data="us")
+            InlineKeyboardButton(text="Какие сроки доставки?",callback_data="deliverytime")
             
-        ],
-        [ # https://primexcargo.org/registration
-            InlineKeyboardButton(text="Китай 🇨🇳",callback_data="cn")
-        ],
-        [ # https://primexcargo.org/registration
-            InlineKeyboardButton(text="Турция 🇹🇷",callback_data="tu")
-        ],
-        [ # https://primexcargo.org/registration
-            InlineKeyboardButton(text="Италия 🇮🇹",callback_data="it")
         ],
         [
-            InlineKeyboardButton(text="Назад ↩",callback_data="backtomainkb")
-            
-        ]
-    ],
-    resize_keyboard=True
-)
-
-
-
-
-otvetynavop = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [
-            InlineKeyboardButton(text="Как отслеживать посылки ?",callback_data="howtotrackorders")
+            InlineKeyboardButton(text="Как отслеживать посылки?",callback_data="howtotrackorders")
             
         ],
-        [ # https://primexcargo.org/registration
+        [
             InlineKeyboardButton(text="Правила получения посылки",callback_data="rulesofgetting")
+            
         ],
         [
-            InlineKeyboardButton(text="Назад ↩",callback_data="backtomainkb")
+            InlineKeyboardButton(text="Назад ↩",callback_data="mainmenu")
             
         ]
     ],
@@ -151,12 +132,48 @@ otvetynavop = InlineKeyboardMarkup(
 )
 
 
-backtoquest = InlineKeyboardMarkup(
-    inline_keyboard=[
-        [
-            InlineKeyboardButton(text="Назад ↩",callback_data="backtoqa")
-            
-        ]
-    ],
-    resize_keyboard=True
-)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##Самые главные кнопки.
+#kk = ReplyKeyboardMarkup(
+#    keyboard=[
+#        [
+#            KeyboardButton(text="Добавить фотку ✅"),
+#            KeyboardButton(text="Удалить фотку ❌")
+#        ],
+#        [
+#            KeyboardButton(text="Мои фотки 🎞")
+#        ],
+#        [
+#            KeyboardButton(text="Инструкция 📜")
+#        ]
+#    ],
+#    resize_keyboard=True
+#)
+#
