@@ -18,7 +18,7 @@ import buttons
 
 # All handlers should be attached to the Router (or Dispatcher)
 
-TOKEN = "7911707477:AAGynC66CbOweF0LMF6rOa1GPeLLyOFxRgc"
+TOKEN = ""
 
 allids = {
     "startphoto" : "AgACAgIAAxkBAAMDZys6_3ZcFnD2Gh-OA7mP-e1KatQAAmPeMRvSMFhJbYBcP3pZ6BYBAAMCAAN4AAM2BA",
@@ -238,18 +238,6 @@ async def rulesofgetting(callback: CallbackQuery, state: FSMContext):
 
 
 
-# Получение Айдишек , для фото и видео !
-
-#@dp.message(F.video)
-#async def sendback(message: Message):
-#    file_id = message.video.file_id
-#    await message.answer(f"{file_id}")
-#    
-#      
-#@dp.message(F.photo)
-#async def sendback(message: Message):
-#    file_id = message.photo[-1].file_id
-#    await message.answer(f"{file_id}")
 
 
 
